@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy 18th Birthday ♡</title>
+<!-- Elegant fonts (falls back to Georgia / cursive if offline) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<!-- Connects the CSS file (must be in the same folder) -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Reusable crown illustration -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8dccf"/><stop offset="1" stop-color="#c98a8a"/>
+    </linearGradient>
+    <symbol id="crown" viewBox="0 0 64 44">
+      <path d="M6 38 L2 12 L18 24 L32 4 L46 24 L62 12 L58 38 Z" fill="url(#gold)" stroke="#b76e79" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="2" cy="11" r="3.5" fill="#fff"/><circle cx="32" cy="4" r="3.5" fill="#fff"/><circle cx="62" cy="11" r="3.5" fill="#fff"/>
+      <rect x="8" y="38" width="48" height="5" rx="2.5" fill="#c98a8a"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Floating hearts, sparkles, butterflies are added here by script.js -->
+<div id="fx" aria-hidden="true"></div>
+
+<!-- Sound on/off button (top-right corner) -->
+<button class="sound" id="soundBtn" aria-label="Turn sound on or off">🔊</button>
+
+<!-- ================= PAGE 1: BIRTHDAY CAKE ================= -->
+<section class="page active" id="page1">
+  <svg class="crown" viewBox="0 0 64 44" aria-hidden="true"><use href="#crown"/></svg>
+  <h1 class="script">Happy 18th Birthday, Birthday Girl! ♡</h1>
+
+  <div class="cake" id="cake" aria-label="Birthday cake">
+    <div class="candles">
+      <span class="candle" style="--c:#ffc2d9"><i class="flame"></i></span>
+      <span class="candle" style="--c:#d9c3f2"><i class="flame"></i></span>
+      <span class="candle" style="--c:#bfe6e0"><i class="flame"></i></span>
+      <span class="candle" style="--c:#ffe3a8"><i class="flame"></i></span>
+      <span class="candle" style="--c:#f7b6a8"><i class="flame"></i></span>
+    </div>
+    <div class="tier t2"></div>
+    <div class="tier t1"></div>
+    <div class="plate"></div>
+  </div>
+
+  <p class="lead" id="blowMsg">Blow the candles, birthday girl! 🎂</p>
+  <button class="btn" id="blowBtn">Blow the Candles</button>
+  <button class="btn ghost" id="micBtn">or use your microphone 🎤</button>
+  <button class="btn" id="openBtn" hidden>Open Your Surprise ♡</button>
+</section>
+
+<!-- ================= PAGE 2: THE MESSAGE ================= -->
+<section class="page" id="page2">
+  <svg class="crown fade" style="--d:.2s" viewBox="0 0 64 44" aria-hidden="true"><use href="#crown"/></svg>
+  <div class="big18 fade" style="--d:.5s">18</div>
+  <h2 class="script fade" style="--d:1s">To Our Beautiful Birthday Girl</h2>
+  <p class="lead fade" style="--d:1.8s">Welcome to your eighteenth chapter!</p>
+  <div class="glass fade" style="--d:2.7s">
+    <p>May your 18th year be filled with beautiful memories, endless happiness, unforgettable adventures, and all the love your heart deserves. You deserve all the beautiful things life has to offer. Happy debut!</p>
+  </div>
+  <button class="btn fade" style="--d:4s" id="memBtn">See Your Memories ♡</button>
+</section>
+
+<!-- ================= PAGE 3: PHOTO REVEAL ================= -->
+<section class="page" id="page3">
+  <h2 class="script fade" style="--d:.2s">Your Memories</h2>
+  <p class="lead fade" style="--d:.5s">A little surprise awaits you. Click each card to reveal a memory! ♡</p>
+
+  <div class="cards">
+    <!--
+      ===== WHERE TO PUT YOUR 5 PICTURES =====
+      Save your photos in the SAME folder as index.html and name them exactly:
+      picture1.jpg, picture2.jpg, picture3.jpg, picture4.jpg, picture5.jpg
+      (lowercase, .jpg). To use another name or .png, change the src="..." below.
+      Until a picture exists, a pretty pink placeholder is shown instead.
+    -->
+    <div class="card" role="button" tabindex="0" aria-label="Memory No. 1">
+      <div class="inner">
+        <div class="face front"><span class="bow">🎀</span><span class="label">Memory No. 1</span></div>
+        <div class="face back"><div class="ph"><span>Photo 1</span><img src="picture1.jpg" alt="Memory 1" onerror="this.style.display='none'"></div><em>Memory No. 1 ♡</em></div>
+      </div>
+    </div>
+    <div class="card" role="button" tabindex="0" aria-label="Memory No. 2">
+      <div class="inner">
+        <div class="face front"><span class="bow">🎀</span><span class="label">Memory No. 2</span></div>
+        <div class="face back"><div class="ph"><span>Photo 2</span><img src="picture2.jpg" alt="Memory 2" onerror="this.style.display='none'"></div><em>Memory No. 2 ♡</em></div>
+      </div>
+    </div>
+    <div class="card" role="button" tabindex="0" aria-label="Memory No. 3">
+      <div class="inner">
+        <div class="face front"><span class="bow">🎀</span><span class="label">Memory No. 3</span></div>
+        <div class="face back"><div class="ph"><span>Photo 3</span><img src="picture3.jpg" alt="Memory 3" onerror="this.style.display='none'"></div><em>Memory No. 3 ♡</em></div>
+      </div>
+    </div>
+    <div class="card" role="button" tabindex="0" aria-label="Memory No. 4">
+      <div class="inner">
+        <div class="face front"><span class="bow">🎀</span><span class="label">Memory No. 4</span></div>
+        <div class="face back"><div class="ph"><span>Photo 4</span><img src="picture4.jpg" alt="Memory 4" onerror="this.style.display='none'"></div><em>Memory No. 4 ♡</em></div>
+      </div>
+    </div>
+    <div class="card" role="button" tabindex="0" aria-label="Memory No. 5">
+      <div class="inner">
+        <div class="face front"><span class="bow">🎀</span><span class="label">Memory No. 5</span></div>
+        <div class="face back"><div class="ph"><span>Photo 5</span><img src="picture5.jpg" alt="Memory 5" onerror="this.style.display='none'"></div><em>Memory No. 5 ♡</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Made with love ♡</footer>
+
+<!-- Connects the JavaScript file (must be in the same folder) -->
+<script src="script.js"></script>
+</body>
+</html>

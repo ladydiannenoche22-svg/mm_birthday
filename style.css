@@ -1,0 +1,146 @@
+/* ========== BASICS & COLORS ========== */
+:root{
+  --baby:#ffd9e8; --blush:#f7b6cd; --rose:#b76e79; --gold:#e8b4a6;
+  --cream:#fff8f1; --lav:#e5d8f6; --ink:#7b4b5a;
+  --shadow:0 12px 36px rgba(183,110,121,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{
+  min-height:100vh; overflow-x:hidden; color:var(--ink);
+  font-family:'Cormorant Garamond',Georgia,serif; font-size:1.2rem;
+  background:linear-gradient(160deg,#ffdfec 0%,#fff5ef 50%,#eadcfa 100%) fixed;
+}
+.script{
+  font-family:'Great Vibes','Brush Script MT',cursive; font-weight:400; line-height:1.15;
+  font-size:clamp(2.2rem,7vw,4rem); padding:0 6px;
+  background:linear-gradient(135deg,#b76e79,#eebcb0 50%,#c98a8a); -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 2px 6px rgba(255,255,255,.9));
+}
+.lead{font-size:clamp(1.25rem,3.5vw,1.6rem);font-style:italic;margin:14px 0;max-width:560px}
+footer{position:relative;z-index:1;text-align:center;padding:18px;font-style:italic;color:var(--rose)}
+
+/* ========== FLOATING BACKGROUND (created by script.js) ========== */
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float{position:absolute;bottom:-50px;opacity:0;animation:rise linear forwards}
+@keyframes rise{
+  0%{opacity:0;transform:translateY(0) rotate(0)}
+  12%{opacity:.9}
+  100%{opacity:0;transform:translateY(-115vh) translateX(var(--dx)) rotate(var(--rot))}
+}
+.float.bfly{animation-name:drift}
+@keyframes drift{
+  0%{opacity:0;transform:translate(0,0) rotate(0)}
+  10%{opacity:.95}
+  25%{transform:translate(50px,-25vh) rotate(18deg)}
+  50%{transform:translate(-40px,-55vh) rotate(-15deg)}
+  75%{transform:translate(45px,-85vh) rotate(15deg)}
+  100%{opacity:0;transform:translate(-20px,-115vh) rotate(0)}
+}
+
+/* ========== PAGES & TRANSITIONS ========== */
+.page{
+  display:none; position:relative; z-index:1; min-height:calc(100vh - 60px);
+  padding:36px 18px 30px; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+}
+.page.active{display:flex;animation:pageIn 1s ease both}
+.page.leaving{animation:pageOut .6s ease both}
+@keyframes pageIn{from{opacity:0;transform:scale(.97) translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pageOut{to{opacity:0;transform:scale(1.04);filter:blur(8px)}}
+.fade{opacity:0;animation:fadeUp 1.3s ease forwards;animation-delay:var(--d,0s)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ========== BUTTONS ========== */
+.btn{
+  position:relative; overflow:hidden; margin:8px; padding:14px 34px; border:0; border-radius:999px; cursor:pointer;
+  font:600 1.2rem 'Cormorant Garamond',Georgia,serif; letter-spacing:.04em; color:#fff;
+  background:linear-gradient(135deg,#f7a8c4,#e8a0a8 55%,#d4879b);
+  box-shadow:0 8px 22px rgba(212,135,155,.45),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:transform .3s,box-shadow .3s;
+}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 30px rgba(212,135,155,.55)}
+.btn:hover::after{left:130%}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:rgba(255,255,255,.7);color:var(--rose);box-shadow:0 4px 14px rgba(183,110,121,.2);font-size:1rem;padding:9px 22px}
+#openBtn{animation:pop .9s cubic-bezier(.3,1.5,.5,1) both,pulse 2s 1s ease-in-out infinite}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(247,168,196,.0),0 0 34px 10px rgba(247,168,196,.7)}}
+
+/* ========== DECORATIONS: CROWN & 18 ========== */
+.crown{width:64px;height:44px;filter:drop-shadow(0 4px 6px rgba(183,110,121,.35));animation:bob 3.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-3deg)}}
+.big18{
+  font-family:'Great Vibes',cursive; font-size:clamp(7rem,28vw,12rem); line-height:1;
+  background:linear-gradient(135deg,#b76e79,#f6d3c8 45%,#c98a8a 70%,#f3c1d3); -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 4px 10px rgba(183,110,121,.3));
+  animation:shimmer 4s ease-in-out infinite alternate;
+}
+@keyframes shimmer{to{filter:drop-shadow(0 0 22px rgba(255,190,215,.95))}}
+
+/* ========== CSS CAKE ========== */
+.cake{position:relative;width:min(300px,78vw);height:290px;margin:56px auto 24px;filter:drop-shadow(0 18px 18px rgba(183,110,121,.3))}
+.cake.glow{animation:glow 2.2s ease-in-out infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 30px rgba(255,190,215,1))}}
+.plate{position:absolute;bottom:0;left:-12%;width:124%;height:28px;border-radius:50%;background:linear-gradient(#fff,#f3dcd9);box-shadow:0 6px 0 #ecc9cb}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px 14px 12px 12px}
+.t1{--drip:#fff;bottom:14px;width:100%;height:110px;z-index:1;
+  background:radial-gradient(circle,#fff 3px,transparent 4px) 0 100%/18px 16px repeat-x,linear-gradient(90deg,#f6a9c3,#ffd3e4 40%,#f4a0bd)}
+.t2{--drip:#f9b9d0;bottom:118px;width:72%;height:90px;z-index:2;
+  background:radial-gradient(circle,#e8b4a6 3px,transparent 4px) 0 100%/16px 16px repeat-x,linear-gradient(90deg,#fff1f5,#fff 45%,#fadce6)}
+.tier::before{content:"";position:absolute;top:-10px;left:-3%;width:106%;height:26px;border-radius:50%;background:var(--drip);box-shadow:inset 0 -4px 0 rgba(230,150,180,.35)}
+.tier::after{content:"";position:absolute;top:8px;left:0;right:0;height:28px;border-radius:0 0 12px 12px;
+  background:radial-gradient(circle at 14px 0,var(--drip) 14px,transparent 15px) 0 0/28px 28px repeat-x}
+
+/* ========== CANDLES & FLAMES ========== */
+.candles{position:absolute;left:50%;bottom:206px;width:70%;transform:translateX(-50%);display:flex;justify-content:space-around;align-items:flex-end;z-index:3}
+.candle{position:relative;width:12px;height:44px;border-radius:3px;box-shadow:0 3px 6px rgba(0,0,0,.12);
+  background:repeating-linear-gradient(-45deg,rgba(255,255,255,.6) 0 5px,transparent 5px 10px),var(--c)}
+.candle:nth-child(even){height:52px}
+.candle::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:6px;margin-left:-1px;background:#6b4a4a}
+.flame{position:absolute;left:50%;bottom:100%;width:13px;height:25px;margin:0 0 5px -6.5px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;
+  background:radial-gradient(ellipse at 50% 72%,#fff 0 20%,#ffe9a8 45%,#ffb36b 100%);
+  box-shadow:0 0 14px 6px rgba(255,210,140,.6); transform-origin:50% 100%;
+  animation:flick .2s ease-in-out infinite alternate; transition:opacity .8s,transform .8s}
+.candle:nth-child(2n) .flame{animation-duration:.26s}
+.candle:nth-child(3n) .flame{animation-duration:.17s}
+@keyframes flick{from{transform:scale(1,1) rotate(-4deg)}to{transform:scale(.9,1.1) rotate(4deg)}}
+.candle.out .flame{animation:none;opacity:0;transform:scale(0)}
+.candle::after{content:"";position:absolute;left:50%;bottom:100%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:rgba(255,255,255,.85);opacity:0}
+.candle.out::after{animation:smoke 1.8s ease-out}
+@keyframes smoke{0%{opacity:.9;transform:translateY(0) scale(.6)}100%{opacity:0;transform:translateY(-46px) scale(2.6)}}
+
+/* sparkle burst when candles go out */
+.spark{position:absolute;left:50%;top:18%;width:8px;height:8px;border-radius:50%;background:var(--col);box-shadow:0 0 10px 3px var(--col);animation:burst 1.4s ease-out forwards;z-index:5}
+@keyframes burst{from{transform:translate(0,0) scale(1);opacity:1}to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+
+/* ========== PAGE 2: MESSAGE ========== */
+.glass{max-width:620px;margin:18px 0 24px;padding:28px clamp(18px,5vw,40px);border-radius:28px;line-height:1.6;font-size:clamp(1.15rem,3.2vw,1.4rem);
+  background:rgba(255,255,255,.62);border:1px solid #fff;box-shadow:var(--shadow);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* ========== PAGE 3: FLIP CARDS ========== */
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 22px;max-width:1060px;margin:30px auto 0}
+.card{width:clamp(138px,40vw,184px);aspect-ratio:3/4;perspective:900px;cursor:pointer;outline:none;transition:translate .3s}
+.card:nth-child(odd){rotate:-2deg}
+.card:nth-child(even){rotate:2deg}
+.card:hover,.card:focus-visible{translate:0 -10px}
+.inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,1.25,.5,1)}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+/* front: pink envelope with ribbon */
+.front{background:linear-gradient(145deg,#ffd0e1,#f7a3c0)}
+.front::before{content:"";position:absolute;top:0;left:0;right:0;height:58%;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(#fff0f5,#ffc6da)}
+.front::after{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 9px);width:18px;background:linear-gradient(90deg,#d9958f,#f6d3c8,#d9958f);opacity:.9}
+.bow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.4rem;z-index:2;filter:drop-shadow(0 3px 4px rgba(183,110,121,.4))}
+.label{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:2;white-space:nowrap;padding:5px 14px;border-radius:999px;font-size:1rem;font-weight:600;background:var(--cream);color:var(--rose);box-shadow:0 3px 8px rgba(183,110,121,.25)}
+/* back: polaroid photo */
+.back{transform:rotateY(180deg);background:#fff;padding:8px 8px 34px}
+.ph{position:relative;width:100%;height:100%;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--lav),var(--baby));color:var(--rose);font-style:italic}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.back em{position:absolute;bottom:7px;left:0;right:0;font-family:'Great Vibes',cursive;font-size:1.3rem;color:var(--rose)}
+
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ========== SOUND BUTTON ========== */
+.sound{position:fixed;top:14px;right:14px;z-index:10;width:44px;height:44px;border:0;border-radius:50%;cursor:pointer;font-size:1.2rem;background:rgba(255,255,255,.78);box-shadow:var(--shadow);transition:transform .3s}
+.sound:hover{transform:scale(1.12) rotate(8deg)}
